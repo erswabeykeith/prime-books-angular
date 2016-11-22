@@ -6,6 +6,7 @@ myApp.controller("BookController", ["$http", function($http) {
   var self = this;
   self.newBook = {};
   self.books = [];
+  self.updatedBook = {},
 
   getBooks();
 
@@ -34,6 +35,16 @@ myApp.controller("BookController", ["$http", function($http) {
     $http.delete('/books/' + id)
       .then(function(response) {
         console.log('DELETE finished. Get books again.');
+        getBooks();
+      });
+  }
+  self.editBook = function(book) {
+    var id = book.id;
+    console.log(book.id);
+    console.log(book);
+    $http.put('/books/' + id, book)
+      .then(function(response) {
+        console.log('EDIT finished. Get books again.');
         getBooks();
       });
   }

@@ -50,11 +50,12 @@
 
     <h2>Books</h2>
     <div class="book" ng-repeat="book in bookController.books">
-      <p>{{book.title}} By: {{book.author}}</p>
-      <p>{{book.published}}</p>
-      <p>{{book.genre}}</p>
-      <p>{{book.edition}}</p>
-      <p>{{book.publisher}}</p>
+      <input type="text" ng-model="bookController.updatedBook.title" ng-value="book.title" name="title" class="form-control" />
+      <input type="text" ng-model="bookController.updatedBook.author" ng-value="book.author" name="author" class="form-control" />
+      <input type="text" ng-model="bookController.updatedBook.published" ng-value="book.published" name="published" class="form-control" />
+      <input type="text" ng-model="bookController.updatedBook.genre" ng-value="book.genre" name="genre" class="form-control" />
+      <input type="text" ng-model="bookController.updatedBook.edition" ng-value="book.edition" name="edition" class="form-control" />
+      <input type="text" ng-model="bookController.updatedBook.publisher" ng-value="book.publisher" name="publisher" class="form-control" />
       <button ng-click="bookController.deleteBook(book)">Delete Book</button>
       <button ng-click="bookController.editBook(book)">Edit Book</button>
     </div>
