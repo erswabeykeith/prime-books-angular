@@ -47,15 +47,20 @@
 
       <button class="btn btn-default" ng-click="bookController.addBook()">Go</button>
     </form>
+    <select ng-model="selectedGenre">
+      <option ng-repeat="book in bookController.books | unique:'genre'">{{book.genre}}</option>
+    </select>
+
+
 
     <h2>Books</h2>
-    <div class="book" ng-repeat="book in bookController.books">
-      <input type="text" ng-model="bookController.updatedBook.title" ng-value="book.title" name="title" class="form-control" />
-      <input type="text" ng-model="bookController.updatedBook.author" ng-value="book.author" name="author" class="form-control" />
-      <input type="text" ng-model="bookController.updatedBook.published" ng-value="book.published" name="published" class="form-control" />
-      <input type="text" ng-model="bookController.updatedBook.genre" ng-value="book.genre" name="genre" class="form-control" />
-      <input type="text" ng-model="bookController.updatedBook.edition" ng-value="book.edition" name="edition" class="form-control" />
-      <input type="text" ng-model="bookController.updatedBook.publisher" ng-value="book.publisher" name="publisher" class="form-control" />
+    <div class="book" ng-repeat="book in bookController.books | filter:selectedGenre">
+      <input type="text" ng-model="book.title" ng-value="book.title" name="title" class="form-control" />
+      <input type="text" ng-model="book.author" ng-value="book.author" name="author" class="form-control" />
+      <input type="text" ng-model="book.published" ng-value="book.published" name="published" class="form-control" />
+      <input type="text" ng-model="book.genre" ng-value="book.genre" name="genre" class="form-control" />
+      <input type="text" ng-model="book.edition" ng-value="book.edition" name="edition" class="form-control" />
+      <input type="text" ng-model="book.publisher" ng-value="book.publisher" name="publisher" class="form-control" />
       <button ng-click="bookController.deleteBook(book)">Delete Book</button>
       <button ng-click="bookController.editBook(book)">Edit Book</button>
     </div>
